@@ -1,0 +1,127 @@
+uk:
+  datetime: &datetime
+    month_names:
+      [~, Січень, Лютий, Березень, Квітень, Травень, Червень, Липень, Серпень, Вересень, Жовтень, Листопад, Грудень]
+    day_names:
+      [Неділя, Понеділок, Вівторок, Середа, Четвер, Пʼятниця, Субота]
+    formats:
+      default: "%d.%m.%Y"
+      short: "%d.%m.%y"
+      iso: "%Y-%m-%d"
+  date:
+    <<: *datetime
+  time:
+    <<: *datetime
+  activerecord:
+    attributes:
+      user:
+        email: Пошта
+        old_password: Старий пароль
+        password: Пароль
+        password_confirmation: Підтвердження паролю
+        updated_at: Оновлено
+        created_at: Створено
+        role: Роль
+      post:
+        title: Заголовок
+        description: Опис
+        photo: Фото
+        status: Статус
+      tag:
+        name: Ім'я
+        status: Статус
+    models:
+      post: Допис
+
+  admin:
+    posts:
+      index:
+        title: Дописи
+        tags: Теги
+      new:
+        title: Новий допис
+      edit:
+        title: Редагування допису
+      form:
+        title_label: Введіть заголовок
+        photo_label: Головне зображення
+        choose_photo: Вибрати зображення
+        description_label: Опис
+        status_label: Статус Активний ?
+        tag_label: Теги
+        main_post_label: Головна допис ?
+      create:
+        success: Допис успішно створено
+      update:
+        success: Допис успішно оновлено
+      destroy:
+        success: Допис успішно видалено
+
+    shared:
+      admin_left_panel:
+        admin: Адмін
+        posts: Дописи
+        tags: Теги
+        statistic: Статистика
+        exit: Вихід
+
+    tags:
+      index:
+        tags: Існуючі теги
+        create: Створити тег
+      form:
+        title_label: Назва тегу
+      edit:
+        title_label: Назва тегу
+      create:
+        success: Тег успішно створено
+      update:
+        success: Тег успішно оновлено
+      destroy:
+        success: Тег успішно видалено
+
+  en: Англійська
+  uk: Українська
+
+  global:
+    errors:
+      invalid_format: має недійсний формат
+    user:
+      roles:
+        basic: Базовий
+        moderator: Модератор
+        admin: Адмін
+    button:
+      delete: Видалити
+      cancel: Скасувати
+      create: Створити
+      save: Зберегти
+      edit: Редагувати
+      show: Показти
+      submit: Надіслати
+    dialog:
+      you_sure: Ви впевнені?
+    text:
+      omission: ... (продовження)
+  main_btn:
+    read_more: Читати далі
+  nav_item:
+    root: Головна
+    faq: FAQ
+    sign_in: Авторизуватись
+    panel: Адмін панель
+    sign_out: Вийти
+  application_controller:
+    alert: Ви не авторизовані для виконання цього екшену.
+  other:
+    posts: Схожі публікації
+  forms:
+    title-login: Вхід
+    email: Емейл*
+    password: Пароль*
+    password_confirmation: Повтор пароля*
+    remember_me: Запам’ятати мене
+    login: Увійти
+    register: Зареєструватися
+    title-register: Реєстрація
+    account_exist: У вас вже є обліковий запис?

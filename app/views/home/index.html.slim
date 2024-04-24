@@ -1,0 +1,32 @@
+.home__container
+  - if @main_post.present?
+    .intro-block
+      .intro-block__img
+        - if @main_post.photo.url
+          = image_tag @main_post.photo.url
+        .intro-block__content
+          .flex-admin
+            .intro-block__date = @main_post.created_at.strftime("%Y-%m-%d %H:%M:%S")
+          h1.intro-block__title = @main_post.title
+          h6.intro-block__subtitle = @main_post.description
+          .tags-inner
+            - @main_post.tags.each do |tag|
+              .intro-block__tag = tag.title
+  .posts
+    .posts__inner
+      - @posts.each do |post|
+        .post-column
+          .post
+            .post-img
+              - if post.photo.url
+                = image_tag post.photo.url
+            .flex-admin
+              .intro-block__date = post.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            h2.post__title = post.title
+            p.post__text = post.description
+            .post-tags
+              - post.tags.each do |tag|
+                .post-tag = tag.title
+            = link_to 'View details', post_path(post.id), class: 'main-btn'
+  .pagination__inner
+    == pagy_bootstrap_nav(@pagy)

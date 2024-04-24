@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  encoding: utf8
+  reconnect: true
+  pool: 5
+
+development:
+  <<: *default
+  database: ruby_coin_development
+
+test:
+  <<: *default
+  database: ruby_coin_test
+
+production:
+  <<: *default
+  database: ruby_coin_production
+  username: <%= ENV["PRODUCTION_USERNAME"] %>
+  password: <%= ENV["PRODUCTION_PASSWORD"] %>

@@ -1,0 +1,34 @@
+nav.navbar.sticky-top.navbar-expand-lg
+  / .navbar__container
+  a.navbar-brand href=root_path Blog
+  button.navbar-toggler.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-i
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item
+        = link_to t("nav_item.root"), root_path, class: "nav-link home #{active_class(root_path)}"
+      .actions.desk
+        .dropdown.languages
+          = link_to 'uk', class: 'nav-link px-2 dropdown-toggle d-flex', data: { "bs-toggle": 'dropdown' } do
+            = image_tag "#{I18n.locale}-flag.svg", class: 'flag-locale', alt: 'Experience People Image'
+          ul.dropdown-menu
+            - I18n.available_locales.each do |locale|
+              li
+                - if I18n.locale == locale
+                  = tag.span t(locale), class: 'dropdown-item'
+                - else
+                  = link_to t(locale), url_for(locale: locale), class: 'dropdown-item'
+        .dropdown.admin
+          button.dropdown-toggle[type="button" data-bs-toggle="dropdown" aria-expanded="false"]
+          ul.dropdown-menu
+            li
+              - unless user_signed_in?
+                li
+                  = link_to t("nav_item.sign_in"), new_user_session_path, class: "dropdown-item profile"
+              - else
+                - if current_user.admin? || current_user.moderator?
+                  li
+                    = link_to t("nav_item.panel"), admin_root_path, class: "dropdown-item panel"
+                li.exit
+                  = button_to t("nav_item.sign_out"), destroy_user_session_path, method: :delete, class: "dropdown-item exit"
+            button.navbar-toggler.collapsed[type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]

@@ -1,0 +1,4 @@
+:scheduler:
+  :schedule:
+    Posts::MainPostJob:
+      cron: '* * * * *'
